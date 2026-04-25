@@ -623,6 +623,70 @@ font-size:54px;
 margin-bottom:20px;
 }
 
+/* TESTIMONIALS */
+
+.testimonials{
+padding:100px 0;
+background:var(--light);
+}
+
+.testimonials .section-title{
+margin-bottom:18px;
+}
+
+.section-subtitle{
+text-align:center;
+max-width:720px;
+margin:0 auto 50px;
+color:rgba(27,27,27,.72);
+font-size:18px;
+}
+
+.t-grid{
+display:grid;
+grid-template-columns:repeat(3, minmax(0, 1fr));
+gap:22px;
+}
+
+.t-card{
+background:#fff;
+border-radius:26px;
+padding:26px 24px;
+box-shadow:0 12px 30px rgba(0,0,0,.06);
+border:1px solid rgba(0,0,0,.06);
+}
+
+.t-stars{
+letter-spacing:2px;
+color:#f4b400;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.t-quote{
+color:rgba(27,27,27,.78);
+font-size:16px;
+line-height:1.7;
+margin-bottom:16px;
+}
+
+.t-who{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+}
+
+.t-name{
+font-weight:800;
+}
+
+.t-meta{
+font-size:13px;
+color:rgba(27,27,27,.55);
+font-weight:700;
+}
+
 /* FOOTER */
 
 footer{
@@ -714,6 +778,10 @@ height:380px;
 
 .course-grid{
 grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.t-grid{
+grid-template-columns:1fr;
 }
 }
 
@@ -1058,6 +1126,42 @@ with expert guidance.
 </div>
 
 </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Students Say</h2>
+    <p class="section-subtitle">Professional training, friendly mentors, and a community that keeps you motivated—here’s what our learners and parents share.</p>
+
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <div class="t-quote">“The classes are structured and easy to follow. My confidence improved within a few weeks, and the mentors are genuinely supportive.”</div>
+        <div class="t-who">
+          <div class="t-name">Anitha R.</div>
+          <div class="t-meta">Parent • Piano</div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <div class="t-quote">“Great balance of fundamentals and performance practice. The feedback is clear and practical—exactly what I needed to progress.”</div>
+        <div class="t-who">
+          <div class="t-name">Karthik S.</div>
+          <div class="t-meta">Student • Drums</div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <div class="t-quote">“Friendly environment and consistent guidance. The lessons feel modern, but the technique training is solid. Highly recommend.”</div>
+        <div class="t-who">
+          <div class="t-name">Meera V.</div>
+          <div class="t-meta">Student • Vocals</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
