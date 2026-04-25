@@ -33,6 +33,16 @@ text-decoration:none;
 color:white;
 }
 
+.btn-reset{
+appearance:none;
+border:0;
+background:transparent;
+padding:0;
+font:inherit;
+color:inherit;
+cursor:pointer;
+}
+
 .container{
 width:min(1200px,92%);
 margin:auto;
@@ -110,6 +120,191 @@ transition:.3s;
 .enroll-btn:hover{
 background:white;
 color:var(--brand);
+}
+
+/* MODALS */
+
+.modal{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:3000;
+}
+
+.modal.open{
+display:flex;
+}
+
+.modal-backdrop{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+}
+
+.modal-panel{
+position:relative;
+width:min(920px, 96vw);
+max-height:min(84vh, 720px);
+overflow:auto;
+background:#ffffff;
+color:var(--text);
+border-radius:26px;
+box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+
+.modal-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:18px;
+padding:18px 22px;
+border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.modal-title{
+font-size:20px;
+font-weight:800;
+}
+
+.modal-close{
+width:42px;
+height:42px;
+border-radius:12px;
+display:grid;
+place-items:center;
+background:rgba(0,0,0,.06);
+transition:background .2s ease;
+}
+
+.modal-close:hover{
+background:rgba(0,0,0,.10);
+}
+
+.modal-body{
+padding:22px;
+}
+
+.instrument-grid{
+display:grid;
+grid-template-columns:repeat(5, minmax(0, 1fr));
+gap:16px;
+}
+
+.instrument-card{
+border:1px solid rgba(0,0,0,.08);
+border-radius:18px;
+padding:14px 12px 12px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+background:#fff;
+transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.instrument-card:hover{
+transform:translateY(-4px);
+box-shadow:0 16px 40px rgba(0,0,0,.10);
+}
+
+.instrument-img{
+width:100%;
+height:110px;
+display:grid;
+place-items:center;
+overflow:hidden;
+}
+
+.instrument-img :is(img, svg){
+max-width:100%;
+max-height:110px;
+object-fit:contain;
+transform:scale(1);
+transition:transform .22s ease;
+}
+
+.instrument-card:hover .instrument-img :is(img, svg){
+transform:scale(1.12);
+}
+
+.instrument-name{
+font-weight:800;
+font-size:14px;
+text-align:center;
+}
+
+.selected-pill{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 12px;
+border-radius:999px;
+background:rgba(17,180,183,.10);
+color:#0b6d70;
+font-weight:800;
+font-size:13px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+font-weight:700;
+margin-bottom:6px;
+color:rgba(27,27,27,.8);
+}
+
+.field input{
+width:100%;
+border:1px solid rgba(0,0,0,.14);
+border-radius:14px;
+padding:12px 12px;
+font-size:14px;
+outline:none;
+}
+
+.field input:focus{
+border-color:rgba(17,180,183,.65);
+box-shadow:0 0 0 4px rgba(17,180,183,.15);
+}
+
+.modal-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:14px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+border-radius:999px;
+padding:12px 18px;
+font-weight:800;
+border:1px solid rgba(0,0,0,.10);
+background:#fff;
+color:var(--text);
+}
+
+.btn-primary{
+background:var(--brand);
+border-color:transparent;
+color:#fff;
+box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+.btn-primary:hover{
+background:var(--brand-dark);
 }
 
 /* HERO */
@@ -252,10 +447,44 @@ border-radius:28px;
 box-shadow:0 12px 30px rgba(0,0,0,.06);
 transition:.3s;
 text-align:center;
+min-height:420px;
+display:flex;
+flex-direction:column;
 }
 
 .card:hover{
 transform:translateY(-8px);
+}
+
+.card.blank{
+justify-content:center;
+color:rgba(27,27,27,.45);
+}
+
+.card.video{
+padding:40px 32px;
+text-align:center;
+overflow:hidden;
+}
+
+.card.video .ig-wrap{
+display:flex;
+justify-content:center;
+}
+
+.ig-embed{
+width:100%;
+border-radius:18px;
+overflow:hidden;
+margin-top:14px;
+background:#000;
+}
+
+.ig-embed iframe{
+width:100%;
+height:360px;
+border:0;
+display:block;
 }
 
 .icon{
@@ -483,6 +712,30 @@ height:54px;
 width:26px;
 height:26px;
 }
+
+.modal-panel{
+border-radius:20px;
+}
+
+.instrument-grid{
+grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.instrument-img{
+height:100px;
+}
+
+.instrument-img img{
+max-height:100px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.ig-embed iframe{
+height:320px;
+}
 }
 </style>
 </head>
@@ -506,7 +759,7 @@ height:26px;
 <a href="#">Contact</a>
 </div>
 
-<a href="#" class="enroll-btn">Enroll Now</a>
+<button type="button" class="enroll-btn btn-reset" id="enrollBtn">Enroll Now</button>
 
 </nav>
 </div>
@@ -546,28 +799,37 @@ with expert guidance.
 
 <div class="grid">
 
-<div class="card">
-<div class="icon">🎼</div>
-<h4>Expert Teachers</h4>
-<p>Train with passionate and experienced musicians.</p>
+<div class="card video">
+  <div class="icon">🎼</div>
+  <h4>Expert Teachers</h4>
+  <p>Train with passionate and experienced musicians.</p>
+  <div class="ig-embed">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/Kuu8GB5le-o?rel=0&playsinline=1"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      title="Expert Teachers Video"
+    ></iframe>
+  </div>
 </div>
 
 <div class="card">
-<div class="icon">🎹</div>
-<h4>Wide Courses</h4>
-<p>Piano, vocals, theory and performance programs.</p>
+  <div class="icon">🎹</div>
+  <h4>Wide Courses</h4>
+  <p>Piano, vocals, theory and performance programs.</p>
 </div>
 
 <div class="card">
-<div class="icon">👥</div>
-<h4>Community</h4>
-<p>Join a thriving musical learning environment.</p>
+  <div class="icon">👥</div>
+  <h4>Community</h4>
+  <p>Join a thriving musical learning environment.</p>
 </div>
 
 <div class="card">
-<div class="icon">⭐</div>
-<h4>Recitals</h4>
-<p>Stage opportunities to showcase talent.</p>
+  <div class="icon">⭐</div>
+  <h4>Recitals</h4>
+  <p>Stage opportunities to showcase talent.</p>
 </div>
 
 </div>
@@ -626,6 +888,123 @@ with expert guidance.
 </div>
 </footer>
 
+<!-- Enroll modal -->
+<div class="modal" id="instrumentModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="instrumentModal"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="instrumentModalTitle">
+    <div class="modal-head">
+      <div class="modal-title" id="instrumentModalTitle">Choose an instrument</div>
+      <button type="button" class="modal-close btn-reset" data-close="instrumentModal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="instrument-grid">
+        <button type="button" class="instrument-card btn-reset" data-instrument="Guitar">
+          <div class="instrument-img">
+            <svg viewBox="0 0 256 256" role="img" aria-label="Guitar">
+              <path fill="#C98A4A" d="M155 20c8 1 15 7 16 15l6 53-22 3-4-34-14 2 3 25-22 3-4-32c-1-9 5-17 14-18l27-4z"/>
+              <path fill="#F2C38B" d="M162 97c14-2 27 7 30 21l7 33c4 19-8 38-28 42-4 1-9 1-13 0-8 20-28 37-54 42-39 8-76-13-84-49-8-36 15-72 53-81 25-6 50 1 66 16 7-14 14-23 23-24z"/>
+              <circle cx="108" cy="166" r="18" fill="#E6B06F"/>
+              <path fill="#8C5A2B" d="M191 88l60-9 2 14-60 9-2-14z"/>
+              <path fill="#1B1B1B" opacity=".25" d="M90 132c18-6 39 2 50 19l-9 5c-8-13-24-19-38-15-13 4-22 16-22 29h-10c0-18 12-34 29-38z"/>
+              <path fill="#FFFFFF" opacity=".55" d="M144 120c-10 9-17 22-20 37-1 5-1 11 0 16l-10 2c-2-7-2-14-1-21 3-18 12-34 25-45l6 11z"/>
+            </svg>
+          </div>
+          <div class="instrument-name">Guitar</div>
+        </button>
+        <button type="button" class="instrument-card btn-reset" data-instrument="Piano">
+          <div class="instrument-img">
+            <svg viewBox="0 0 256 256" role="img" aria-label="Piano">
+              <path fill="#222" d="M34 88c0-10 8-18 18-18h104c53 0 84 20 84 56 0 36-31 56-84 56H92l-24 30H46l24-30H52c-10 0-18-8-18-18V88z"/>
+              <path fill="#111" d="M92 96h112c26 0 44 10 44 30 0 20-18 30-44 30H92V96z"/>
+              <path fill="#f7f7f7" d="M96 104h96v48H96v-48z"/>
+              <path fill="#eaeaea" d="M120 104h10v48h-10v-48zm22 0h10v48h-10v-48zm22 0h10v48h-10v-48z"/>
+              <path fill="#333" d="M106 104h8v28h-8v-28zm22 0h8v28h-8v-28zm22 0h8v28h-8v-28zm22 0h8v28h-8v-28z"/>
+              <path fill="#2b2b2b" d="M64 200h16l-10 12H54l10-12zm132-18h18l10 30h-18l-10-30z"/>
+              <path fill="#000" opacity=".2" d="M52 76h122c58 0 74 28 74 50 0 32-28 50-74 50H86l-22 28h-8l26-32h94c50 0 64-16 64-44 0-28-14-44-64-44H52c-2 0-4 2-4 4v76c0 2 2 4 4 4h28l-6 8H52c-6 0-12-6-12-12V88c0-6 6-12 12-12z"/>
+            </svg>
+          </div>
+          <div class="instrument-name">Piano</div>
+        </button>
+        <button type="button" class="instrument-card btn-reset" data-instrument="Violin">
+          <div class="instrument-img">
+            <svg viewBox="0 0 256 256" role="img" aria-label="Violin">
+              <path fill="#8C4B2D" d="M152 34c12-12 31-12 43 0l7 7-14 14-7-7c-4-4-11-4-15 0l-17 17-14-14 17-17z"/>
+              <path fill="#B5653A" d="M108 72c10-10 26-10 36 0l40 40c10 10 10 26 0 36-6 6-14 8-22 6-1 15-7 29-18 40-23 23-55 28-73 10-18-18-13-50 10-73 11-11 25-17 40-18-2-8 0-16 6-22 0 0  -19-19 -19-19z"/>
+              <path fill="#A55635" d="M127 91c-6 6-6 16 0 22l16 16c6 6 16 6 22 0s6-16 0-22l-16-16c-6-6-16-6-22 0z"/>
+              <circle cx="110" cy="140" r="12" fill="#8E3D27"/>
+              <circle cx="150" cy="180" r="12" fill="#8E3D27"/>
+              <path fill="#2B2B2B" d="M214 40l10 10-136 136-10-10L214 40z"/>
+              <path fill="#1B1B1B" opacity=".25" d="M95 205c12 12 36 6 54-12 18-18 24-42 12-54l8-8c16 16 9 51-13 73-22 22-57 29-73 13l8-12z"/>
+              <path fill="#F5D6C6" opacity=".55" d="M132 116c-18 2-34 10-46 22-16 16-20 36-12 44 8 8 28 4 44-12 12-12 20-28 22-46l-8-8z"/>
+            </svg>
+          </div>
+          <div class="instrument-name">Violin</div>
+        </button>
+        <button type="button" class="instrument-card btn-reset" data-instrument="Drums">
+          <div class="instrument-img">
+            <svg viewBox="0 0 256 256" role="img" aria-label="Drums">
+              <path fill="#D9D9D9" d="M48 120h88v64c0 18-20 32-44 32s-44-14-44-32v-64z"/>
+              <path fill="#BDBDBD" d="M48 120c0-18 20-32 44-32s44 14 44 32-20 32-44 32-44-14-44-32z"/>
+              <path fill="#E74C3C" d="M56 124h72v10H56v-10z"/>
+              <path fill="#F2C94C" d="M156 78c0-10 12-18 28-18s28 8 28 18-12 18-28 18-28-8-28-18z"/>
+              <path fill="#E0B93C" d="M184 96v86h-10V96h10z"/>
+              <path fill="#F2C94C" d="M146 112c0-9 11-16 26-16s26 7 26 16-11 16-26 16-26-7-26-16z"/>
+              <path fill="#E0B93C" d="M172 128v54h-10v-54h10z"/>
+              <path fill="#2B2B2B" d="M128 96l62-30 4 8-62 30-4-8zm-8 6l-66-26-3 8 66 26 3-8z"/>
+              <path fill="#1B1B1B" opacity=".22" d="M92 90c-20 0-36 12-36 26s16 26 36 26 36-12 36-26-16-26-36-26zm0 10c14 0 26 8 26 16s-12 16-26 16-26-8-26-16 12-16 26-16z"/>
+            </svg>
+          </div>
+          <div class="instrument-name">Drums</div>
+        </button>
+        <button type="button" class="instrument-card btn-reset" data-instrument="Singing">
+          <div class="instrument-img">
+            <svg viewBox="0 0 256 256" role="img" aria-label="Singing">
+              <path fill="#2F2F2F" d="M128 34c22 0 40 18 40 40v54c0 22-18 40-40 40s-40-18-40-40V74c0-22 18-40 40-40z"/>
+              <path fill="#1F1F1F" d="M104 74c0-13 11-24 24-24s24 11 24 24v54c0 13-11 24-24 24s-24-11-24-24V74z"/>
+              <path fill="#11b4b7" d="M86 122h12c0 17 14 30 30 30s30-13 30-30h12c0 22-16 41-38 47v22h22v12H102v-12h22v-22c-22-6-38-25-38-47z"/>
+              <path fill="#BDBDBD" d="M96 82h64v10H96V82zm0 24h64v10H96v-10z"/>
+              <path fill="#000" opacity=".22" d="M128 38c-19 0-34 15-34 34v54c0 19 15 34 34 34s34-15 34-34V72c0-19-15-34-34-34z"/>
+            </svg>
+          </div>
+          <div class="instrument-name">Singing</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form modal -->
+<div class="modal" id="enrollFormModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="enrollFormModal"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="enrollFormTitle">
+    <div class="modal-head">
+      <div class="modal-title" id="enrollFormTitle">Enroll</div>
+      <button type="button" class="modal-close btn-reset" data-close="enrollFormModal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="selected-pill" id="selectedInstrumentPill">Instrument: —</div>
+
+      <form id="enrollForm" style="margin-top:14px;">
+        <div class="form-grid">
+          <div class="field">
+            <label for="enrollName">Name</label>
+            <input id="enrollName" name="name" type="text" autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="enrollAge">Age</label>
+            <input id="enrollAge" name="age" type="number" inputmode="numeric" min="1" max="120" required placeholder="Age">
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-reset" data-close="enrollFormModal">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-reset">Send on WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <a
   class="wa-float"
   href="https://wa.me/919790525409"
@@ -650,6 +1029,90 @@ with expert guidance.
 
     window.addEventListener("scroll", setHeaderState, { passive: true });
     setHeaderState();
+  })();
+</script>
+
+<script>
+  (function () {
+    const WHATSAPP_NUMBER = "919790525409";
+
+    const instrumentModal = document.getElementById("instrumentModal");
+    const formModal = document.getElementById("enrollFormModal");
+    const enrollBtn = document.getElementById("enrollBtn");
+    const selectedPill = document.getElementById("selectedInstrumentPill");
+    const form = document.getElementById("enrollForm");
+    const nameInput = document.getElementById("enrollName");
+    const ageInput = document.getElementById("enrollAge");
+
+    if (!instrumentModal || !formModal || !enrollBtn || !selectedPill || !form || !nameInput || !ageInput) return;
+
+    let selectedInstrument = null;
+
+    const openModal = (el) => {
+      el.classList.add("open");
+      el.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = (el) => {
+      el.classList.remove("open");
+      el.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    const closeAll = () => {
+      closeModal(instrumentModal);
+      closeModal(formModal);
+    };
+
+    enrollBtn.addEventListener("click", () => {
+      selectedInstrument = null;
+      openModal(instrumentModal);
+    });
+
+    instrumentModal.addEventListener("click", (e) => {
+      const closeTarget = e.target.closest("[data-close]");
+      if (closeTarget) closeModal(instrumentModal);
+
+      const card = e.target.closest("[data-instrument]");
+      if (!card) return;
+      selectedInstrument = card.getAttribute("data-instrument");
+      selectedPill.textContent = `Instrument: ${selectedInstrument}`;
+      closeModal(instrumentModal);
+      openModal(formModal);
+      setTimeout(() => nameInput.focus(), 0);
+    });
+
+    formModal.addEventListener("click", (e) => {
+      const closeTarget = e.target.closest("[data-close]");
+      if (closeTarget) closeModal(formModal);
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAll();
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!selectedInstrument) return;
+
+      const name = String(nameInput.value || "").trim();
+      const age = String(ageInput.value || "").trim();
+      if (!name || !age) return;
+
+      const msg =
+        `Enrollment Request%0A` +
+        `Instrument: ${selectedInstrument}%0A` +
+        `Name: ${name}%0A` +
+        `Age: ${age}`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+      closeModal(formModal);
+      form.reset();
+      selectedInstrument = null;
+      selectedPill.textContent = "Instrument: —";
+    });
   })();
 </script>
 
