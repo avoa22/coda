@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avoa22.github.io/coda/sitemap.xml
+
