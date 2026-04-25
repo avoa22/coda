@@ -112,14 +112,16 @@ transform:scaleX(1);
 
 .enroll-btn{
 border:2px solid white;
+color:#fff;
 padding:14px 32px;
 border-radius:40px;
 transition:.3s;
 }
 
 .enroll-btn:hover{
-background:white;
-color:var(--brand);
+background:var(--brand);
+border-color:var(--brand);
+color:#fff;
 }
 
 /* MODALS */
@@ -564,7 +566,7 @@ padding:100px 0;
 
 .course-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(4, minmax(0, 1fr));
 gap:30px;
 }
 
@@ -692,6 +694,10 @@ grid-template-columns:1fr;
 .about-img img{
 height:380px;
 }
+
+.course-grid{
+grid-template-columns:repeat(2, minmax(0, 1fr));
+}
 }
 
 @media(max-width:600px){
@@ -741,6 +747,10 @@ font-size:16px;
 
 .about-img img{
 height:320px;
+}
+
+.course-grid{
+grid-template-columns:1fr;
 }
 
 .courses{
@@ -836,7 +846,7 @@ height:320px;
 <div class="menu">
 <a class="active" href="#">Home</a>
 <a href="#about">About</a>
-<a href="#">Courses</a>
+<a href="#courses">Courses</a>
 <a href="#">Teachers</a>
 <a href="#">Gallery</a>
 <a href="#">Contact</a>
@@ -861,7 +871,7 @@ Learn piano, vocals, theory and performance
 with expert guidance.
 </p>
 
-<a href="#" class="cta">Discover Courses</a>
+<a href="#courses" class="cta">Discover Courses</a>
 
 <div class="hero-notes" aria-hidden="true">
   <span>♪</span>
@@ -977,7 +987,7 @@ with expert guidance.
 
 
 
-<section class="courses">
+<section class="courses" id="courses">
 <div class="container">
 
 <h2 class="section-title">Popular Courses</h2>
@@ -987,24 +997,32 @@ with expert guidance.
 <div class="course">
 <img src="https://images.unsplash.com/photo-1514119412350-e174d90d280e?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
-<h3>Piano Foundations</h3>
+<h3>Piano</h3>
 <p>Beginner to advanced structured piano learning.</p>
 </div>
 </div>
 
 <div class="course">
-<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80">
+<img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
-<h3>Voice Training</h3>
-<p>Classical and contemporary vocal coaching.</p>
+<h3>Drums</h3>
+<p>Grooves, rhythm, and performance-ready technique.</p>
 </div>
 </div>
 
 <div class="course">
 <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
-<h3>Performance Skills</h3>
-<p>Stage confidence and recital preparation.</p>
+<h3>Violin</h3>
+<p>Posture, tone, and graded skill development.</p>
+</div>
+</div>
+
+<div class="course">
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80">
+<div class="course-body">
+<h3>Vocals</h3>
+<p>Breath control, pitch, and expressive singing.</p>
 </div>
 </div>
 
