@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Coda Music Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --brand:#d62828;
+ --brand-dark:#b71f1f;
+ --light:#fffaf7;
+ --text:#1b1b1b;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#fff;
+color:var(--text);
+line-height:1.5;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+.container{
+width:min(1200px,92%);
+margin:auto;
+}
+
+/* NAV */
+
+header{
+position:fixed;
+width:100%;
+z-index:1000;
+background:rgba(214,40,40,.92);
+backdrop-filter:blur(8px);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 0;
+}
+
+.logo img{
+height:78px;
+}
+
+.menu{
+display:flex;
+gap:42px;
+font-weight:600;
+}
+
+.menu a{
+position:relative;
+opacity:.95;
+}
+
+.menu a::after{
+content:"";
+position:absolute;
+left:0;
+right:0;
+bottom:-10px;
+height:2px;
+background:#fff;
+transform:scaleX(0);
+transform-origin:left;
+transition:transform .25s ease;
+border-radius:2px;
+opacity:.9;
+}
+
+.menu a:hover::after{
+transform:scaleX(1);
+}
+
+.menu a.active::after{
+transform:scaleX(1);
+}
+
+.enroll-btn{
+border:2px solid white;
+padding:14px 32px;
+border-radius:40px;
+transition:.3s;
+}
+
+.enroll-btn:hover{
+background:white;
+color:var(--brand);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+background:url('child.png');
+background-size:cover;
+background-position:center right;
+display:flex;
+align-items:center;
+color:white;
+padding-top:100px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:-120px -120px auto auto;
+width:520px;
+height:520px;
+background:
+radial-gradient(circle at 10px 10px, rgba(255,255,255,.28) 2px, transparent 2.6px);
+background-size:22px 22px;
+opacity:.35;
+filter:blur(.1px);
+transform:rotate(10deg);
+pointer-events:none;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+right:-140px;
+top:120px;
+width:520px;
+height:520px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.25'%3E%3Cpath d='M40 130c120-120 320-120 440 0' stroke-width='2'/%3E%3Cpath d='M20 190c150-150 350-150 480 0' stroke-width='2'/%3E%3Cpath d='M0 250c180-180 380-180 520 0' stroke-width='2'/%3E%3Cpath d='M0 310c200-200 380-200 520 0' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:contain;
+opacity:.9;
+pointer-events:none;
+}
+
+.hero-wrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.hero h1{
+font-size:clamp(52px,7vw,88px);
+font-weight:800;
+line-height:1.05;
+margin-bottom:30px;
+text-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.hero p{
+font-size:22px;
+max-width:560px;
+margin-bottom:40px;
+text-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.cta{
+display:inline-block;
+background:white;
+color:var(--brand);
+padding:18px 42px;
+border-radius:60px;
+font-weight:700;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.hero-notes{
+margin-top:26px;
+display:flex;
+gap:14px;
+align-items:flex-end;
+opacity:.95;
+}
+
+.hero-notes span{
+display:inline-flex;
+width:46px;
+height:46px;
+border-radius:14px;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+box-shadow:0 16px 45px rgba(0,0,0,.12);
+font-size:22px;
+}
+
+.hero-spacer{
+min-height:520px;
+}
+
+.hero-wave{
+position:absolute;
+left:0;
+right:0;
+bottom:-1px;
+height:110px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='160' viewBox='0 0 1440 160'%3E%3Cpath fill='%23fffaf7' d='M0,96 C220,150 420,30 720,86 C1010,140 1210,90 1440,60 L1440,160 L0,160 Z'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:cover;
+pointer-events:none;
+}
+
+/* FEATURES */
+
+.features{
+padding:100px 0;
+background:var(--light);
+}
+
+.section-title{
+text-align:center;
+font-size:52px;
+margin-bottom:60px;
+font-weight:800;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:35px;
+}
+
+.card{
+background:white;
+padding:40px 32px;
+border-radius:28px;
+box-shadow:0 12px 30px rgba(0,0,0,.06);
+transition:.3s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.icon{
+font-size:52px;
+margin-bottom:20px;
+}
+
+.card h4{
+font-size:24px;
+margin-bottom:12px;
+}
+
+/* COURSES */
+
+.courses{
+padding:100px 0;
+}
+
+.course-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.course{
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 14px 35px rgba(0,0,0,.08);
+}
+
+.course img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.course-body{
+padding:30px;
+}
+
+.course-body h3{
+margin-bottom:14px;
+}
+
+/* CTA STRIP */
+
+.banner{
+margin:100px auto;
+background:linear-gradient(135deg,var(--brand),#8d1111);
+color:white;
+padding:70px 40px;
+border-radius:40px;
+text-align:center;
+}
+
+.banner h2{
+font-size:54px;
+margin-bottom:20px;
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:#ddd;
+padding:60px 0;
+text-align:center;
+}
+
+/* WHATSAPP FLOAT */
+
+.wa-float{
+position:fixed;
+right:22px;
+bottom:22px;
+width:60px;
+height:60px;
+border-radius:999px;
+display:grid;
+place-items:center;
+background:var(--brand);
+color:#fff;
+box-shadow:0 16px 40px rgba(0,0,0,.25);
+z-index:2000;
+transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.wa-float:hover{
+background:var(--brand-dark);
+transform:translateY(-2px);
+box-shadow:0 20px 50px rgba(0,0,0,.28);
+}
+
+.wa-float svg{
+width:30px;
+height:30px;
+display:block;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+.menu{
+display:none;
+}
+
+nav{
+padding:14px 0;
+}
+
+.logo img{
+height:64px;
+}
+
+.enroll-btn{
+padding:12px 24px;
+}
+
+.hero-wrap{
+grid-template-columns:1fr;
+}
+
+.hero-spacer{
+display:none;
+}
+
+.hero{
+text-align:center;
+padding-top:92px;
+background-position:center;
+}
+
+.hero p{
+margin-left:auto;
+margin-right:auto;
+}
+}
+
+@media(max-width:600px){
+.container{
+width:min(1200px,90%);
+}
+
+.hero{
+min-height:92vh;
+padding-top:86px;
+}
+
+.hero h1{
+font-size:clamp(38px, 10vw, 54px);
+margin-bottom:18px;
+}
+
+.hero p{
+font-size:16px;
+line-height:1.65;
+margin-bottom:22px;
+}
+
+.cta{
+padding:14px 28px;
+}
+
+.hero-notes{
+justify-content:center;
+}
+
+.hero-wave{
+height:78px;
+}
+
+.features{
+padding:70px 0;
+}
+
+.courses{
+padding:70px 0;
+}
+
+.section-title{
+font-size:34px;
+margin-bottom:34px;
+}
+
+.card{
+padding:28px 22px;
+border-radius:22px;
+}
+
+.icon{
+font-size:44px;
+margin-bottom:14px;
+}
+
+.card h4{
+font-size:20px;
+}
+
+.course img{
+height:210px;
+}
+
+.course-body{
+padding:22px;
+}
+
+.banner{
+margin:70px auto;
+padding:46px 20px;
+border-radius:28px;
+}
+
+.banner h2{
+font-size:32px;
+}
+
+.wa-float{
+right:16px;
+bottom:16px;
+width:54px;
+height:54px;
+}
+
+.wa-float svg{
+width:26px;
+height:26px;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<nav>
+
+<div class="logo">
+<!-- Replace logo.png with your actual exported logo -->
+<img src="logo.png" alt="Coda Logo">
+</div>
+
+<div class="menu">
+<a class="active" href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Courses</a>
+<a href="#">Teachers</a>
+<a href="#">Gallery</a>
+<a href="#">Contact</a>
+</div>
+
+<a href="#" class="enroll-btn">Enroll Now</a>
+
+</nav>
+</div>
+</header>
+
+
+<section class="hero">
+<div class="container hero-wrap">
+
+<div>
+<h1>Where Music<br>Comes To Life</h1>
+
+<p>
+Passion meets practice at Coda.
+Learn piano, vocals, theory and performance
+with expert guidance.
+</p>
+
+<a href="#" class="cta">Discover Courses</a>
+
+<div class="hero-notes" aria-hidden="true">
+  <span>♪</span>
+  <span>♫</span>
+</div>
+</div>
+
+<div class="hero-spacer" aria-hidden="true"></div>
+
+</div>
+<div class="hero-wave" aria-hidden="true"></div>
+</section>
+
+
+<section class="features">
+<div class="container">
+<h2 class="section-title">Learn. Play. Grow.</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🎼</div>
+<h4>Expert Teachers</h4>
+<p>Train with passionate and experienced musicians.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎹</div>
+<h4>Wide Courses</h4>
+<p>Piano, vocals, theory and performance programs.</p>
+</div>
+
+<div class="card">
+<div class="icon">👥</div>
+<h4>Community</h4>
+<p>Join a thriving musical learning environment.</p>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h4>Recitals</h4>
+<p>Stage opportunities to showcase talent.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<section class="courses">
+<div class="container">
+
+<h2 class="section-title">Popular Courses</h2>
+
+<div class="course-grid">
+
+<div class="course">
+<img src="https://images.unsplash.com/photo-1514119412350-e174d90d280e?auto=format&fit=crop&w=900&q=80">
+<div class="course-body">
+<h3>Piano Foundations</h3>
+<p>Beginner to advanced structured piano learning.</p>
+</div>
+</div>
+
+<div class="course">
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80">
+<div class="course-body">
+<h3>Voice Training</h3>
+<p>Classical and contemporary vocal coaching.</p>
+</div>
+</div>
+
+<div class="course">
+<img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80">
+<div class="course-body">
+<h3>Performance Skills</h3>
+<p>Stage confidence and recital preparation.</p>
+</div>
+</div>
+
+</div>
+
+<div class="banner">
+<h2>Start Your Musical Journey Today</h2>
+<p>Enroll now and discover your sound.</p>
+<br>
+<a class="cta" href="#">Join Coda</a>
+</div>
+
+</div>
+</section>
+
+
+<footer>
+<div class="container">
+<p>© 2026 CODA Music Academy • Learn. Play. Grow.</p>
+</div>
+</footer>
+
+<a
+  class="wa-float"
+  href="https://wa.me/919790525409"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp: +91 9790525409"
+  title="WhatsApp: +91 9790525409"
+>
+  <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M19.11 17.2c-.27-.14-1.6-.79-1.85-.88-.25-.1-.44-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.06-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.35.99 2.66 1.12 2.85.14.18 1.95 2.98 4.72 4.18.66.28 1.17.45 1.57.58.66.21 1.25.18 1.72.11.52-.08 1.6-.66 1.82-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32zM16.02 26.67h-.01c-1.76 0-3.49-.47-5-1.36l-.36-.21-3.51.92.94-3.42-.23-.35a10.58 10.58 0 0 1-1.62-5.64c0-5.84 4.76-10.6 10.62-10.6 2.83 0 5.5 1.1 7.5 3.1a10.5 10.5 0 0 1 3.11 7.48c0 5.84-4.76 10.6-10.44 10.6zm9-20.1A12.66 12.66 0 0 0 16 3.01C9.06 3.01 3.41 8.66 3.41 15.6c0 2.28.6 4.51 1.74 6.47L3.2 29.01l7.11-1.86a12.6 12.6 0 0 0 5.7 1.36h.01c6.94 0 12.59-5.65 12.59-12.59 0-3.36-1.31-6.52-3.59-8.95z"/>
+  </svg>
+</a>
+
+</body>
+</html>
