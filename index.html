@@ -574,6 +574,13 @@ gap:30px;
 border-radius:30px;
 overflow:hidden;
 box-shadow:0 14px 35px rgba(0,0,0,.08);
+cursor:pointer;
+transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.course:hover{
+transform:scale(1.03);
+box-shadow:0 18px 45px rgba(0,0,0,.12);
 }
 
 .course img{
@@ -999,7 +1006,7 @@ with expert guidance.
 
 <div class="course-grid">
 
-<div class="course">
+<div class="course" data-instrument="Piano">
 <img src="https://images.unsplash.com/photo-1514119412350-e174d90d280e?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
 <h3>Piano</h3>
@@ -1007,7 +1014,7 @@ with expert guidance.
 </div>
 </div>
 
-<div class="course">
+<div class="course" data-instrument="Drums">
 <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
 <h3>Drums</h3>
@@ -1015,7 +1022,7 @@ with expert guidance.
 </div>
 </div>
 
-<div class="course">
+<div class="course" data-instrument="Violin">
 <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
 <h3>Violin</h3>
@@ -1023,7 +1030,7 @@ with expert guidance.
 </div>
 </div>
 
-<div class="course">
+<div class="course" data-instrument="Vocals">
 <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80">
 <div class="course-body">
 <h3>Vocals</h3>
@@ -1216,6 +1223,15 @@ with expert guidance.
     enrollBtn.addEventListener("click", () => {
       selectedInstrument = null;
       openModal(instrumentModal);
+    });
+
+    document.addEventListener("click", (e) => {
+      const course = e.target.closest(".course[data-instrument]");
+      if (!course) return;
+      selectedInstrument = course.getAttribute("data-instrument");
+      selectedPill.textContent = `Instrument: ${selectedInstrument}`;
+      openModal(formModal);
+      setTimeout(() => nameInput.focus(), 0);
     });
 
     instrumentModal.addEventListener("click", (e) => {
