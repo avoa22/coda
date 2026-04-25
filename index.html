@@ -28,6 +28,11 @@ color:var(--text);
 line-height:1.5;
 }
 
+html{
+scroll-behavior:smooth;
+scroll-padding-top:110px;
+}
+
 a{
 text-decoration:none;
 color:white;
@@ -417,6 +422,65 @@ pointer-events:none;
 
 /* FEATURES */
 
+.about{
+padding:110px 0 90px;
+background:#fff;
+}
+
+.about-wrap{
+display:grid;
+grid-template-columns:420px 1fr;
+gap:46px;
+align-items:center;
+}
+
+.about-img{
+width:100%;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 14px 35px rgba(0,0,0,.10);
+background:#f3f3f3;
+}
+
+.about-img img{
+width:100%;
+height:520px;
+object-fit:cover;
+display:block;
+}
+
+.about h2{
+font-size:52px;
+font-weight:800;
+line-height:1.1;
+margin-bottom:18px;
+}
+
+.about p{
+font-size:18px;
+color:rgba(27,27,27,.78);
+margin-bottom:14px;
+}
+
+.about .meta{
+margin-top:18px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.chip{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 14px;
+border-radius:999px;
+background:rgba(17,180,183,.10);
+color:#0b6d70;
+font-weight:800;
+font-size:13px;
+}
+
 .features{
 padding:100px 0;
 background:var(--light);
@@ -616,6 +680,18 @@ background-position:center;
 margin-left:auto;
 margin-right:auto;
 }
+
+.about{
+padding:92px 0 70px;
+}
+
+.about-wrap{
+grid-template-columns:1fr;
+}
+
+.about-img img{
+height:380px;
+}
 }
 
 @media(max-width:600px){
@@ -653,6 +729,18 @@ height:78px;
 
 .features{
 padding:70px 0;
+}
+
+.about h2{
+font-size:34px;
+}
+
+.about p{
+font-size:16px;
+}
+
+.about-img img{
+height:320px;
 }
 
 .courses{
@@ -747,7 +835,7 @@ height:320px;
 
 <div class="menu">
 <a class="active" href="#">Home</a>
-<a href="#">About</a>
+<a href="#about">About</a>
 <a href="#">Courses</a>
 <a href="#">Teachers</a>
 <a href="#">Gallery</a>
@@ -785,6 +873,35 @@ with expert guidance.
 
 </div>
 <div class="hero-wave" aria-hidden="true"></div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-img">
+        <img src="child.png" alt="Founder portrait">
+      </div>
+
+      <div>
+        <h2>About Coda</h2>
+        <p>
+          Coda Music Academy was founded with one simple belief: music becomes magical when passion meets practice.
+          Our founder started CODA to make high-quality training accessible, joyful, and structured—so students of all ages
+          can learn confidently and perform proudly.
+        </p>
+        <p>
+          Today, CODA focuses on building strong fundamentals through friendly mentorship, a supportive community,
+          and performance opportunities that help students grow on and off the stage.
+        </p>
+
+        <div class="meta">
+          <span class="chip">Founder-led programs</span>
+          <span class="chip">Kids & Adults</span>
+          <span class="chip">Online + Offline</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
