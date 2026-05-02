@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://kathucoda.com/sitemap.xml
 Sitemap: https://avoa22.github.io/coda/sitemap.xml
 
